@@ -4,7 +4,7 @@ function Cell(i, j){
     this.j = j;
     this.alive = false;
     this.survives = false; //ALso controls birthing of new cells
-    this.neighbours = [];
+    this.neighbours = 0;
 }
 
 
@@ -17,14 +17,14 @@ Cell.prototype.countNeighbours = function(grid){
     const middlej = this.j;
 
     //TODO
-    if(grid[left][top] > -1 && grid[left][top]){ this.neighbours.push(grid[left][top]);} //Left top
-    if(grid[middlei][top] > -1 && grid[middlei][top]){ this.neighbours.push(grid[middlei][top]);} //Middlei top
-    if(grid[right][top] > -1 && grid[right][top]){ this.neighbours.push(grid[right][top]);} //Right top
-    if(grid[left][middlej] > -1 && grid[left][middlej]){ this.neighbours.push(grid[left][middlej]);} //Left middlej
-    if(grid[right][middlej] > -1 && grid[right][middlej]){ this.neighbours.push(grid[right][middlej]);} //Right middlej
-    if(grid[left][bottom] > -1 && grid[left][bottom]){ this.neighbours.push(grid[left][bottom]);} //Left bottom
-    if(grid[middlei][bottom] > -1 && grid[middlei][bottom]){ this.neighbours.push(grid[middlei][bottom]);} //Middlei bottom
-    if(grid[right][bottom] > -1 && grid[right][bottom]){ this.neighbours.push(grid[right][bottom]);} //Right bottom
+    if(grid[left][top] > -1 && grid[left][top].alive){ neighbours++;} //Left top
+    if(grid[middlei][top] > -1 && grid[middlei][top].alive){ neighbours++;} //Middlei top
+    if(grid[right][top] > -1 && grid[right][top].alive){ neighbours++;} //Right top
+    if(grid[left][middlej] > -1 && grid[left][middlej].alive){ neighbours++;} //Left middlej
+    if(grid[right][middlej] > -1 && grid[right][middlej].alive){ neighbours++;} //Right middlej
+    if(grid[left][bottom] > -1 && grid[left][bottom].alive){ neighbours++;} //Left bottom
+    if(grid[middlei][bottom] > -1 && grid[middlei][bottom].alive){ neighbours++;} //Middlei bottom
+    if(grid[right][bottom] > -1 && grid[right][bottom].alive){ neighbours++;} //Right bottom
 }
 
 Cell.prototype.update = function(grid){
