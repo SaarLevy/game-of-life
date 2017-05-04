@@ -30,7 +30,10 @@ Cell.prototype.neighbours = function(grid){
 
 Cell.prototype.update = function(){
     const liveNeighbours = this.neighbours.length;
-    if(this.alive && liveNeighbours <= 2) {this.survives = false}
+    if(this.alive && liveNeighbours < 2) {this.survives = false;}
+    if(this.alive && (liveNeighbours === 2 || liveNeighbours === 3)) {this.survives = true;}
+    if(this.alive && liveNeighbours > 3){this.survives = false;}
+    if(!this.alive && liveNeighbours === 3){this.survives = true;}
 }
 
 Cell.prototype.render = function(size) {
