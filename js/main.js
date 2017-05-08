@@ -1,9 +1,9 @@
 const h = 800; //Height
 const w = 800; //Width
-const s = 20;  //Size of squares
+const s = 10;  //Size of squares
 const rows = Math.floor(h / s);
 const cols = Math.floor(w / s);
-let cells = new Array(cols);
+let cells = new Array(cols + 2); //+2 for zero padding
 let isActive = false;
 let slider;
 
@@ -13,7 +13,7 @@ function setup() {
     createCanvas(w, h);
     slider = createSlider(0, 1, 0, 1);
     for(let i = 0; i < cols; i++){
-        cells[i] = new Array(rows);
+        cells[i] = new Array(rows + 2); //+2 for zero padding
         for(let j = 0; j < rows; j++){
             cells[i][j] = new Cell(i, j);
         }
@@ -23,8 +23,8 @@ function setup() {
 
 //A p5 function that is called every frame
 function draw() {
-    for(i = 0; i < cols; i++){
-        for(j = 0; j < rows; j++){
+    for(i = 1; i < cols - 1 ; i++){ 
+        for(j = 1; j < rows - 1; j++){ // Don't loop padded cells
             if(slider.value() === 1){
                 cells[i][j].update(cells);
             }

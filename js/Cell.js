@@ -27,14 +27,14 @@ class Cell{
             if(grid[left][bottom] && grid[left][bottom].alive) {neighbours++;} //Left bottom
             if(grid[middlei][bottom] && grid[middlei][bottom].alive) {neighbours++;} //Middlei bottom
             if(grid[right][bottom] && grid[right][bottom].alive) {neighbours++;} //Right bottom
+        } catch(ArrayIndexOutOfBoundsException) {}
 
-        }catch(ArrayIndexOutOfBoundsException){}
-    
+
         //This is where the magic happens:
         if(this.alive && neighbours < 2) {this.survives = false;}
-        if(this.alive && (neighbours === 2 || this.neighbours === 3)) {this.survives = true;}
-        if(this.alive && neighbours > 3){this.survives = false;}
-        if(!this.alive && neighbours === 3){this.survives = true;}
+        else if(this.alive && (neighbours === 2 || this.neighbours === 3)) {this.survives = true;}
+        else if(this.alive && neighbours > 3){this.survives = false;}
+        else if(!this.alive && neighbours === 3){this.survives = true;}
     }
 
     render(size){
