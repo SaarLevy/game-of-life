@@ -45,7 +45,7 @@ class Cell{
             stroke(255);
             fill(180);
         }
-        rect(this.i*size, this.j*size, size, size);
+        rect(this.i*size - (2*size), this.j*size - (2*size), size, size);
     }
     
 
