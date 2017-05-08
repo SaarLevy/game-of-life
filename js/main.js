@@ -1,6 +1,6 @@
 const h = 800; //Height
 const w = 800; //Width
-const s = 80;  //Size of squares
+const s = 20;  //Size of squares
 const rows = Math.floor(h / s);
 const cols = Math.floor(w / s);
 let cells = new Array(cols);
@@ -43,5 +43,12 @@ function mousePressed() {
     cells[x][y].alive = !cells[x][y].alive;
 }
 
-
-
+function keyPressed(){
+    if(keyCode === RIGHT_ARROW){
+        for(i = 0; i < cols; i++){
+            for(j = 0; j < rows; j++){
+                cells[i][j].update(cells);
+            }
+        }  
+    }
+}

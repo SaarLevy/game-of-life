@@ -4,10 +4,11 @@ class Cell{
         this.j = j;
         this.alive = false;
         this.survives = false; //Made so not to change alive variabe mid-loop, also controls birthing of new cells
+        
     }
 
     update(grid){
-        let neighbours = function(){ 
+        let neighbours = 0;
         //Variables to make the conditionals below shorter
         const top     = this.j - 1;
         const right   = this.i + 1;
@@ -28,7 +29,7 @@ class Cell{
             if(grid[right][bottom] && grid[right][bottom].alive) {neighbours++;} //Right bottom
 
         }catch(ArrayIndexOutOfBoundsException){}
-        }
+    
         //This is where the magic happens:
         if(this.alive && neighbours < 2) {this.survives = false;}
         if(this.alive && (neighbours === 2 || this.neighbours === 3)) {this.survives = true;}
@@ -46,6 +47,7 @@ class Cell{
         }
         rect(this.i*size, this.j*size, size, size);
     }
+    
 
 }
 
