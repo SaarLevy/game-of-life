@@ -1,16 +1,18 @@
 const h = 800; //Height
 const w = 800; //Width
-const s = 40;  //Size of squares
+const s = 15;  //Size of squares
 const rows = Math.floor(h / s);
 const cols = Math.floor(w / s);
 let cells = new Array(cols + 2); //+2 for zero padding
-const canvas;
+let canvas;
 
 
-document.getElementById("sketch").appendChild(canvas.elt);
+
 //A p5 function that is called once when the page is sketch is loaded
 function setup() {
     canvas = createCanvas(w, h);
+    document.getElementById("sketch").appendChild(canvas.elt);
+    frameRate(30);
     for(let i = 0; i < cols; i++){
         cells[i] = new Array(rows + 2); //+2 for zero padding
         for(let j = 0; j < rows; j++){
